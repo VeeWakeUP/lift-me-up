@@ -3,8 +3,12 @@ name: Schedule daily push notifications
 # Twice a day this looks 36 hours ahead and schedules each time zone's 09:00 message at OneSignal.
 # Delivery itself then happens on OneSignal's servers, whether or not anyone has the app open.
 # Running it more than once is safe: every notification has a fixed idempotency_key, so repeats are ignored.
-# Scheduled runs will be enabled after a successful dry run and live test.
+# Scheduled runs enabled after the user's successful dry run and real Web Push delivery test.
 on:
+  # Schedule ahead for each local 09:00; two UTC runs with a 36-hour planning window.
+  # The scheduler uses deterministic idempotency keys to avoid duplicate notifications.
+  schedule:
+    - cron: '17 4,16 * * *'
   workflow_dispatch:
     inputs:
       dry_run:
