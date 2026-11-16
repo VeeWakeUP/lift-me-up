@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en" data-world="home" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="description" content="Lift Me Up — a little inspiration, every day. Daily motivation quotes and Bible verse paraphrases in English and Greek." />
+    <meta name="theme-color" content="#FFF3E2" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Lift Me Up" />
+    <title>Lift Me Up — A little inspiration, every day</title>
+    <script>
+      // Apply saved appearance before first paint to avoid a flash of the wrong theme.
+      try {
+        var raw = localStorage.getItem('liftmeup:v1:prefs');
+        var p = raw ? JSON.parse(raw) : {};
+        var theme = p.theme === 'dark' || p.theme === 'light' ? p.theme
+          : (window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.dataset.world = 'home';
+        if (p.lang === 'el' || p.lang === 'en') document.documentElement.lang = p.lang;
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>Lift Me Up needs JavaScript to run.</noscript>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

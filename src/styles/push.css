@@ -1,0 +1,205 @@
+/* ==========================================================================
+   Daily notifications: the invitation (Home) and the Settings panel
+   ========================================================================== */
+
+/* ---- the invitation: small, calm, never blocks anything ---------------------- */
+.notify-invite {
+  position: fixed;
+  z-index: 35;
+  left: 50%;
+  translate: -50% 0;
+  bottom: calc(var(--bottom-nav-h) + 12px + env(safe-area-inset-bottom, 0px));
+  width: min(520px, calc(100vw - 24px));
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 14px 16px 14px 14px;
+  border-radius: 22px;
+  color: var(--ink);
+  background: color-mix(in srgb, var(--surface) 92%, transparent);
+  border: 1.5px solid var(--line);
+  box-shadow: 0 22px 44px -18px rgba(40, 20, 80, 0.5), 0 2px 10px -4px rgba(40, 20, 10, 0.25);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  animation: invite-in 0.45s var(--ease-out) both;
+}
+@keyframes invite-in {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: none; }
+}
+.ni-bell {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: #fff;
+  /* the two worlds in one small badge: violet into gold */
+  background: linear-gradient(135deg, #4a1fd0 0%, #8b2fb8 50%, #d19a3a 100%);
+}
+.ni-text h2 {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 800;
+  font-size: 1.2rem;
+  line-height: 1.2;
+}
+.ni-text p {
+  margin-top: 2px;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: var(--ink-soft);
+}
+.ni-text .ni-error {
+  color: var(--danger);
+  font-weight: 700;
+}
+.ni-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+.ni-actions .btn {
+  min-height: 44px;
+  padding: 8px 16px;
+  font-size: 0.9375rem;
+}
+@media (min-width: 960px) {
+  /* on wide screens it tucks into the corner instead of covering the two cards */
+  .notify-invite {
+    left: auto;
+    right: 24px;
+    translate: none;
+    bottom: 24px;
+    width: 380px;
+  }
+}
+/* keeps the end of the Home page reachable above the invitation */
+.invite-spacer {
+  height: 150px;
+}
+
+/* ---- Settings panel ----------------------------------------------------------- */
+.notif-card {
+  gap: var(--s-4);
+}
+.notice-soft {
+  padding: 10px 14px;
+  border-radius: var(--r-md);
+  border: 1.5px solid var(--line);
+  background: var(--surface-2);
+  color: var(--ink-soft);
+  font-size: 0.9375rem;
+}
+.ios-how svg {
+  display: inline-block;
+  vertical-align: -2px;
+}
+.switch-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-4);
+  padding: var(--s-3) 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.switch-label {
+  display: grid;
+  gap: 2px;
+  font-weight: 800;
+  font-size: 1.0625rem;
+}
+.switch-label small {
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--ink-soft);
+}
+.switch {
+  position: relative;
+  flex: none;
+  width: 64px;
+  height: 36px;
+  padding: 0;
+  border: 2px solid var(--ink);
+  border-radius: var(--r-pill);
+  background: var(--surface-2);
+  transition: background-color 0.25s;
+}
+.switch-knob {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--ink);
+  transition: transform 0.28s var(--ease-spring), background-color 0.25s;
+}
+.switch.is-on {
+  background: var(--p-lime);
+}
+html[data-world='bible'] .switch.is-on {
+  background: var(--accent);
+}
+.switch.is-on .switch-knob {
+  transform: translateX(28px);
+  background: var(--p-violet);
+}
+.switch:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.notif-label {
+  margin-bottom: var(--s-2);
+  font-weight: 800;
+}
+.notif-prefs .segmented {
+  display: grid;
+  width: 100%;
+  border-radius: var(--r-lg);
+  gap: 4px;
+}
+.notif-prefs .segmented button {
+  min-height: 48px;
+  border-radius: var(--r-md);
+  text-align: left;
+  padding-inline: 16px;
+}
+@media (min-width: 700px) {
+  .notif-prefs .segmented {
+    display: inline-flex;
+    width: auto;
+    border-radius: var(--r-pill);
+  }
+  .notif-prefs .segmented button {
+    border-radius: var(--r-pill);
+    text-align: center;
+  }
+}
+.notif-facts {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+}
+.notif-facts > div {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--s-4);
+  padding: 8px 0;
+  border-bottom: 1px dashed var(--line);
+  font-size: 0.9375rem;
+}
+.notif-facts dt {
+  color: var(--ink-soft);
+}
+.notif-facts dd {
+  margin: 0;
+  font-weight: 700;
+  text-align: right;
+}
+.notif-privacy {
+  font-size: 0.8125rem;
+}

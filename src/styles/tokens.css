@@ -1,0 +1,222 @@
+/* ==========================================================================
+   Lift Me Up — design tokens
+   Layer 1: brand + primitives (never change)
+   Layer 2: semantic tokens per "world" (home / motivation / bible) and theme
+   ========================================================================== */
+
+:root {
+  /* ---- brand palette -------------------------------------------------- */
+  --p-violet: #1b0a3d;
+  --p-indigo: #2b1066;
+  --p-purple: #5b21ff;
+  --p-purple-2: #8a3ffc;
+  --p-orange: #ff6a1a;
+  --p-amber: #ffb020;
+  --p-lime: #c8ff3d;
+  --p-pink: #ff3d8b;
+  --p-cream: #fff4e0;
+
+  /* ---- antique palette ------------------------------------------------ */
+  --a-parchment: #f8edd2;
+  --a-ivory: #fbf4e2;
+  --a-sepia: #3a2814;
+  --a-walnut: #5a3a22;
+  --a-walnut-deep: #2a1a0e;
+  --a-gold: #b8862b;
+  --a-olive: #5e6b3a;
+  --a-oxblood: #7a2e22;
+
+  /* ---- type ----------------------------------------------------------- */
+  --font-ui: 'Manrope Variable', 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', sans-serif;
+  --font-display: 'Fira Sans Extra Condensed', 'Arial Narrow', 'Segoe UI', sans-serif;
+  --font-serif: 'Alegreya Variable', 'Iowan Old Style', Georgia, 'Times New Roman', serif;
+  --font-hand: 'Caveat Variable', 'Alegreya Variable', 'Segoe Script', cursive;
+
+  /* ---- space, radii, motion ------------------------------------------- */
+  --gutter: 16px;
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 48px;
+  --r-sm: 10px;
+  --r-md: 16px;
+  --r-lg: 24px;
+  --r-pill: 999px;
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --header-h: 60px;
+  --bottom-nav-h: 68px;
+}
+
+/* ==========================================================================
+   HOME world — warm sunrise (neutral brand ground)
+   ========================================================================== */
+html[data-world='home'][data-theme='light'] {
+  --bg: #fff3e2;
+  --bg-2: #ffe4c2;
+  --surface: #ffffff;
+  --surface-2: #fff9f0;
+  --ink: #26143f;
+  --ink-soft: #5a4a72;
+  --line: rgba(38, 20, 63, 0.16);
+  --accent: #c2410c;
+  --focus: #5b21ff;
+  --btn-bg: #ff6a1a;
+  --btn-ink: #1b0a3d;
+  --btn-shadow: 0 3px 0 rgba(27, 10, 61, 0.9);
+  --nav-bg: rgba(255, 249, 240, 0.94);
+  --header-bg: rgba(255, 243, 226, 0.88);
+  --chip-bg: #ffffff;
+  --chip-on-bg: #26143f;
+  --chip-on-ink: #fff4e0;
+  --logo-sun-a: #ff6a1a;
+  --logo-sun-b: #ffb020;
+  --logo-ink: #26143f;
+  --logo-spark: #5b21ff;
+  --shadow-card: 0 1px 0 rgba(38, 20, 63, 0.06), 0 14px 30px -18px rgba(38, 20, 63, 0.35);
+  --danger: #b42318;
+}
+html[data-world='home'][data-theme='dark'] {
+  --bg: #160e24;
+  --bg-2: #20123a;
+  --surface: #221736;
+  --surface-2: #2a1c43;
+  --ink: #fbf0e2;
+  --ink-soft: #c9bbdc;
+  --line: rgba(251, 240, 226, 0.18);
+  --accent: #ffb020;
+  --focus: #c8ff3d;
+  --btn-bg: #ff7a2e;
+  --btn-ink: #1b0a3d;
+  --btn-shadow: 0 3px 0 rgba(0, 0, 0, 0.5);
+  --nav-bg: rgba(27, 17, 44, 0.94);
+  --header-bg: rgba(22, 14, 36, 0.86);
+  --chip-bg: #2a1c43;
+  --chip-on-bg: #fbf0e2;
+  --chip-on-ink: #1b0a3d;
+  --logo-sun-a: #ff6a1a;
+  --logo-sun-b: #ffb020;
+  --logo-ink: #fbf0e2;
+  --logo-spark: #c8ff3d;
+  --shadow-card: 0 1px 0 rgba(255, 255, 255, 0.04), 0 16px 32px -18px rgba(0, 0, 0, 0.7);
+  --danger: #ff8a80;
+}
+
+/* ==========================================================================
+   MOTIVATION world — electric purple / orange / lime
+   ========================================================================== */
+html[data-world='motivation'][data-theme='light'] {
+  --bg: #f8f6ff;
+  --bg-2: #ece6ff;
+  --surface: #ffffff;
+  --surface-2: #f9f6ff;
+  --ink: #1b0a3d;
+  --ink-soft: #52407a;
+  --line: rgba(27, 10, 61, 0.18);
+  --accent: #5b21ff;
+  --focus: #5b21ff;
+  --btn-bg: #5b21ff;
+  --btn-ink: #ffffff;
+  --btn-shadow: 0 8px 16px -8px rgba(91, 33, 255, 0.7);
+  --nav-bg: rgba(255, 255, 255, 0.95);
+  --header-bg: rgba(248, 246, 255, 0.9);
+  --chip-bg: #ffffff;
+  --chip-on-bg: #1b0a3d;
+  --chip-on-ink: #c8ff3d;
+  --logo-sun-a: #ff6a1a;
+  --logo-sun-b: #ffb020;
+  --logo-ink: #1b0a3d;
+  --logo-spark: #5b21ff;
+  --shadow-card: 0 14px 30px -18px rgba(27, 10, 61, 0.4);
+  --danger: #b42318;
+}
+html[data-world='motivation'][data-theme='dark'] {
+  --bg: #100623;
+  --bg-2: #1b0a3d;
+  --surface: #1e0f40;
+  --surface-2: #281352;
+  --ink: #f6f0ff;
+  --ink-soft: #cdbdf0;
+  --line: rgba(246, 240, 255, 0.2);
+  --accent: #c8ff3d;
+  --focus: #c8ff3d;
+  --btn-bg: #c8ff3d;
+  --btn-ink: #1b0a3d;
+  --btn-shadow: 0 8px 18px -8px rgba(200, 255, 61, 0.45);
+  --nav-bg: rgba(22, 9, 46, 0.95);
+  --header-bg: rgba(16, 6, 35, 0.86);
+  --chip-bg: #281352;
+  --chip-on-bg: #c8ff3d;
+  --chip-on-ink: #1b0a3d;
+  --logo-sun-a: #ff6a1a;
+  --logo-sun-b: #ffb020;
+  --logo-ink: #f6f0ff;
+  --logo-spark: #c8ff3d;
+  --shadow-card: 0 16px 32px -18px rgba(0, 0, 0, 0.7);
+  --danger: #ff8a80;
+}
+
+/* ==========================================================================
+   BIBLE world — the old library
+   ========================================================================== */
+html[data-world='bible'][data-theme='light'] {
+  --bg: #d9c69a;
+  --bg-2: #cdb887;
+  --surface: #f8edd2;
+  --surface-2: #f1e3c0;
+  --ink: #3a2814;
+  --ink-soft: #664d30;
+  --line: rgba(58, 40, 20, 0.28);
+  --accent: #75490c;
+  --gold: #b8862b;
+  --focus: #7a2e22;
+  --btn-bg: #5a3a22;
+  --btn-ink: #fbf0d6;
+  --btn-shadow: inset 0 0 0 1.5px #d4a24a, 0 3px 6px -2px rgba(42, 26, 14, 0.6);
+  --nav-bg: rgba(63, 41, 24, 0.97);
+  --header-bg: rgba(230, 212, 172, 0.9);
+  --chip-bg: #f8edd2;
+  --chip-on-bg: #5a3a22;
+  --chip-on-ink: #fbf0d6;
+  --logo-sun-a: #b8862b;
+  --logo-sun-b: #d9a441;
+  --logo-ink: #3a2814;
+  --logo-spark: #75490c;
+  --shadow-card: 0 2px 0 rgba(90, 58, 34, 0.25), 0 22px 40px -22px rgba(42, 26, 14, 0.7);
+  --danger: #8f2418;
+  --leather: #4a2f1b;
+  --leather-2: #2f1d10;
+  --page-edge: #e4d1a3;
+}
+html[data-world='bible'][data-theme='dark'] {
+  --bg: #17100b;
+  --bg-2: #22160e;
+  --surface: #2a1e14;
+  --surface-2: #33251a;
+  --ink: #f0e3c6;
+  --ink-soft: #cdb98f;
+  --line: rgba(240, 227, 198, 0.24);
+  --accent: #e3b95f;
+  --gold: #d9a441;
+  --focus: #f0c46c;
+  --btn-bg: #d9a441;
+  --btn-ink: #2a1a0e;
+  --btn-shadow: inset 0 0 0 1.5px #f3d28c, 0 3px 8px -2px rgba(0, 0, 0, 0.7);
+  --nav-bg: rgba(35, 23, 14, 0.97);
+  --header-bg: rgba(23, 16, 11, 0.88);
+  --chip-bg: #2a1e14;
+  --chip-on-bg: #d9a441;
+  --chip-on-ink: #2a1a0e;
+  --logo-sun-a: #d9a441;
+  --logo-sun-b: #f0c46c;
+  --logo-ink: #f0e3c6;
+  --logo-spark: #f0c46c;
+  --shadow-card: 0 2px 0 rgba(0, 0, 0, 0.5), 0 24px 44px -22px rgba(0, 0, 0, 0.9);
+  --danger: #ff9a8a;
+  --leather: #3a2516;
+  --leather-2: #1f130a;
+  --page-edge: #4a3622;
+}

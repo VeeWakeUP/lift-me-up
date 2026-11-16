@@ -1,0 +1,325 @@
+/* ==========================================================================
+   MOTIVATION — a minimal gradient inspiration card.
+   One colourful surface, one strong quote, almost nothing else.
+   (The same card is reused on Home, Saved and My Quotes.)
+   ========================================================================== */
+
+/* ---- calm page ------------------------------------------------------------ */
+html[data-world='motivation'] .display-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-style: normal;
+  text-transform: uppercase;
+  font-size: clamp(1.9rem, 7vw, 2.6rem);
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-align: center;
+  color: var(--ink);
+  margin: var(--s-4) 0 var(--s-4);
+  text-wrap: balance;
+}
+html[data-world='motivation'] .display-title:lang(el) {
+  font-size: clamp(1.7rem, 6.4vw, 2.3rem);
+}
+.grad-text {
+  color: inherit;
+}
+
+/* ---- categories: quiet text pills --------------------------------------- */
+html[data-world='motivation'] .chip {
+  min-height: 40px;
+  padding: 6px 14px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  border: 1.5px solid var(--line);
+  background: transparent;
+  color: var(--ink-soft);
+}
+html[data-world='motivation'] .chip:hover {
+  color: var(--ink);
+  border-color: var(--ink);
+  transform: none;
+}
+html[data-world='motivation'] .chip[aria-pressed='true'] {
+  background: var(--chip-on-bg);
+  color: var(--chip-on-ink);
+  border-color: var(--chip-on-bg);
+}
+.mot-chips {
+  justify-content: flex-start;
+}
+@media (min-width: 640px) {
+  .mot-chips {
+    justify-content: center;
+  }
+}
+
+/* ---- single centred column ------------------------------------------------ */
+.mot-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 560px;
+  margin: 0 auto;
+}
+.mot-screen > * {
+  width: 100%;
+}
+/* ---- action row (shared by both worlds) -------------------------------- */
+.action-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--s-2);
+}
+.action-row .action-btn {
+  flex-direction: column;
+  gap: 4px;
+  min-height: 60px;
+  padding: 8px 4px;
+  font-size: 0.8125rem;
+  line-height: 1.15;
+  text-align: center;
+  background: transparent;
+}
+@media (min-width: 560px) {
+  .action-row .action-btn {
+    flex-direction: row;
+    gap: 8px;
+    min-height: 50px;
+    font-size: 0.9375rem;
+  }
+}
+.btn-today {
+  width: 100%;
+}
+.own-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  color: var(--ink-soft);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.own-link:hover {
+  color: var(--ink);
+}
+
+/* ==========================================================================
+   TONES — gradient + text colour chosen for the emotion of each category.
+   Every pairing keeps text contrast at or above 4.5:1 (most are 7:1+).
+   ========================================================================== */
+.tone-motivation {
+  /* energy: sunrise amber → orange → coral */
+  --card-bg: linear-gradient(150deg, #ffb347 0%, #ff8a4c 48%, #ff6b81 100%);
+  --card-ink: #2b0d06;
+  --card-glow: rgba(255, 122, 80, 0.45);
+  --card-cta-bg: #2b0d06;
+  --card-cta-ink: #fff1e0;
+}
+.tone-success {
+  /* achievement: champagne gold → peach */
+  --card-bg: linear-gradient(150deg, #ffe29a 0%, #ffcfa3 55%, #ffb8a5 100%);
+  --card-ink: #3a1d0a;
+  --card-glow: rgba(255, 190, 110, 0.5);
+  --card-cta-bg: #3a1d0a;
+  --card-cta-ink: #fff3dc;
+}
+.tone-confidence {
+  /* confidence: royal purple → magenta */
+  --card-bg: linear-gradient(150deg, #5b21b6 0%, #8b1fa8 52%, #be185d 100%);
+  --card-ink: #ffffff;
+  --card-glow: rgba(160, 50, 190, 0.5);
+  --card-cta-bg: #ffffff;
+  --card-cta-ink: #4a1590;
+}
+.tone-discipline {
+  /* discipline: deep blue → slate */
+  --card-bg: linear-gradient(150deg, #0b2a5b 0%, #1e3a8a 50%, #334155 100%);
+  --card-ink: #ffffff;
+  --card-glow: rgba(40, 80, 170, 0.5);
+  --card-cta-bg: #ffffff;
+  --card-cta-ink: #14306b;
+}
+.tone-growth {
+  /* growth: fresh mint → teal */
+  --card-bg: linear-gradient(150deg, #c7f9cc 0%, #86ead9 55%, #a8e6b0 100%);
+  --card-ink: #052e26;
+  --card-glow: rgba(70, 200, 170, 0.5);
+  --card-cta-bg: #052e26;
+  --card-cta-ink: #e6fff4;
+}
+.tone-hope {
+  /* hope: soft sky blue */
+  --card-bg: linear-gradient(150deg, #d9eeff 0%, #98cdff 55%, #bfe3ff 100%);
+  --card-ink: #0b2545;
+  --card-glow: rgba(110, 175, 255, 0.5);
+  --card-cta-bg: #0b2545;
+  --card-cta-ink: #eaf5ff;
+}
+.tone-calm {
+  /* calm encouragement (personal quotes): lavender → peach */
+  --card-bg: linear-gradient(150deg, #e4dcff 0%, #f5d9ec 55%, #ffddc4 100%);
+  --card-ink: #2e1f4d;
+  --card-glow: rgba(190, 160, 240, 0.5);
+  --card-cta-bg: #2e1f4d;
+  --card-cta-ink: #f6f0ff;
+}
+
+/* ==========================================================================
+   CARD
+   ========================================================================== */
+.poster {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 23rem;
+  padding: 26px 24px 22px;
+  border-radius: 28px;
+  color: var(--card-ink);
+  background: var(--card-bg);
+  /* a soft coloured glow under the card instead of a hard outline */
+  box-shadow: 0 26px 48px -24px var(--card-glow), 0 4px 14px -6px rgba(0, 0, 0, 0.18);
+}
+/* faint light from the top-left and a whisper of grain: both very subtle */
+.poster::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(120% 80% at 12% 0%, rgba(255, 255, 255, 0.28), transparent 60%),
+    var(--grain);
+  opacity: 0.9;
+  mix-blend-mode: soft-light;
+}
+
+.poster-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 32px;
+}
+.poster-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  border-radius: var(--r-pill);
+  font-family: var(--font-ui);
+  font-weight: 800;
+  font-size: 0.75rem;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+/* official: solid chip; explored: outline only, so the difference is obvious */
+.badge-official {
+  background: var(--card-ink);
+  color: var(--card-cta-ink);
+}
+.badge-explored {
+  border: 1.5px dashed currentColor;
+  background: transparent;
+}
+.badge-date {
+  opacity: 0.85;
+}
+.poster-title {
+  max-width: 100%;
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: var(--card-ink);
+  color: var(--card-cta-ink);
+  font-weight: 800;
+  font-size: 0.8125rem;
+  overflow-wrap: anywhere;
+}
+
+/* the quote: bold, centred, sentence case for easy scanning */
+.poster-text {
+  position: relative;
+  margin: auto auto;
+  padding: 26px 0 22px;
+  max-width: 22ch;
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-align: center;
+  line-height: 1.14;
+  letter-spacing: 0.004em;
+  text-wrap: balance;
+  overflow-wrap: break-word;
+}
+.size-xl { font-size: clamp(2.6rem, 11.5vw, 3.8rem); }
+.size-lg { font-size: clamp(2.3rem, 9.8vw, 3.2rem); }
+.size-md { font-size: clamp(2rem, 8.4vw, 2.7rem); }
+.size-sm { font-size: clamp(1.75rem, 7.2vw, 2.25rem); }
+.poster-text:lang(el) { line-height: 1.18; }
+
+.poster-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 34px;
+}
+.poster-sign {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 800;
+  font-size: 0.75rem;
+  line-height: 1.25;
+  max-width: 62%;
+  opacity: 0.85;
+}
+.poster-sign .logo-mark {
+  width: 26px;
+  height: 26px;
+  flex: none;
+  --logo-sun-a: var(--card-ink);
+  --logo-sun-b: var(--card-ink);
+  --logo-ink: var(--card-ink);
+  --logo-spark: var(--card-ink);
+}
+.poster-sign .logo-spark {
+  animation: none;
+}
+.poster-cat {
+  flex: none;
+  padding: 6px 11px;
+  border-radius: var(--r-pill);
+  border: 1.5px solid currentColor;
+  font-weight: 800;
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* compact card (lists) */
+.poster-compact {
+  min-height: 14rem;
+  padding: 20px 18px 16px;
+  border-radius: 22px;
+}
+.poster-compact .poster-text {
+  padding: 16px 0 14px;
+}
+.poster-compact .size-xl { font-size: clamp(2.1rem, 8.5vw, 2.8rem); }
+.poster-compact .size-lg { font-size: clamp(1.9rem, 7.5vw, 2.4rem); }
+.poster-compact .size-md { font-size: clamp(1.7rem, 6.6vw, 2.1rem); }
+.poster-compact .size-sm { font-size: clamp(1.5rem, 6vw, 1.8rem); }
+
+@media (max-width: 699px) {
+  .poster:not(.poster-compact) {
+    min-height: 22rem;
+  }
+}
