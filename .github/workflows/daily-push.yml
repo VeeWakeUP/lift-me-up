@@ -1,0 +1,41 @@
+name: Schedule daily push notifications
+
+# Twice a day this looks 36 hours ahead and schedules each time zone's 09:00 message at OneSignal.
+# Delivery itself then happens on OneSignal's servers, whether or not anyone has the app open.
+# Running it more than once is safe: every notification has a fixed idempotency_key, so repeats are ignored.
+# Scheduled runs will be enabled after a successful dry run and live test.
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Only print the plan, send nothing'
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: daily-push
+  cancel-in-progress: false
+
+jobs:
+  schedule:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15 # a hung API call can never block the schedule for hours
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Self-check the plan (no network, no secrets used)
+        run: npm run push:verify
+      - name: Schedule notifications
+        # The secret is exposed to this one step only (not to `npm ci` and its install scripts).
+        env:
+          ONESIGNAL_APP_ID: ${{ vars.ONESIGNAL_APP_ID }}
+          ONESIGNAL_REST_API_KEY: ${{ secrets.ONESIGNAL_REST_API_KEY }}
+          SITE_URL: ${{ vars.SITE_URL }}
+        run: npx tsx scripts/daily-push.ts ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run && '--dry-run' || '' }}
